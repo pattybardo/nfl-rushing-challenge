@@ -1,0 +1,97 @@
+#!/usr/bin/env node
+var pool = require("../main/db");
+
+const rushingData = require("../rushing.json");
+
+
+function cleanLongestRush(longestRush) {
+    /**
+     * cleanLongestRush takes the longestRush as an argument and cleans it. 
+     * The problem is the longestRush stat contains integers for the longest rush, but if it
+     * ends in a touchdown, this is a string ending in 'T'.
+     * The return value is an object containing the longest rush integer, and a boolean determining
+     * whether the rush ended in a touchdown or not.
+     * @param {*} longestRush - The longest yard stat
+     * @return {Integer, Boolean}
+     */
+    rushStr = longestRush.toString();
+    
+    if (rushStr.charAt(rushStr.length-1) === 'T') {
+        return {
+            lRush: parseInt(rushStr.substring(0,rushStr.length-1)),
+            isTouchdown: true
+        }
+    } else {
+        return {
+            lRush: parseInt(longestRush),
+            isTouchdown: false
+        }
+    }
+};
+
+function cleanTotalYards(totalYards) {
+    /**
+     * cleanTotalYards takes the totalYards as an argument and cleans it. 
+     * The problem is the totalYards stat contains Strings and Integers, as well
+     * as yards formatted with commas when above 1000 yards.
+     * The return value is an integer
+     * @param {*} totalYards - The total yards stat
+     * @return {Integer}
+     */
+
+    totYardsStr = totalYards.toString();
+    return parseInt(totYardsStr.replace(',', ''))
+}
+
+// Insert query to populate the database with cleaned data
+rushingData.forEach(async playerStat => {
+    try {
+        const { lRush, isTouchdown } = cleanLongestRush(playerStat["Lng"])
+
+        const totalYards = cleanTotalYards(playerStat["Yds"])
+
+        const values = [
+            playerStat["Player"],
+            playerStat["Team"],
+            playerStat["Pos"],
+            playerStat["Att"],
+            playerStat["Att/G"],
+            totalYards,
+            playerStat["Avg"],
+            playerStat["Yds/G"],
+            playerStat["TD"],
+            lRush,
+            isTouchdown,
+            playerStat["1st"],
+            playerStat["1st%"],
+            playerStat["20+"],
+            playerStat["40+"],
+            playerStat["FUM"]
+        ]
+        pool.query(`INSERT INTO nfl_rushing(
+            player, 
+            team,
+            position,
+            rushing_attempts,
+            rushing_attempts_per_game,
+            total_rushing_yards,
+            average_rushing_yards,
+            yards_per_game,
+            total_rushing_touchdowns,
+            longest_rush,
+            longest_rush_is_touchdown,
+            rushing_first_downs,
+            rushing_first_downs_percentage,
+            rushes_more_than_20,
+            rushes_more_than_40,
+            rushing_fumbles
+            )
+              VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9,
+                $10, $11, $12, $13, $14, $15, $16)`,
+              values)
+    } catch (e) {
+        console.error(e)
+    }
+});
+
+console.log("DB initialized")
