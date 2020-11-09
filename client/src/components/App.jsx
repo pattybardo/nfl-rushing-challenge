@@ -31,7 +31,7 @@ function App() {
           <StatRow 
             player={entry["Player"]}
             team={entry["Team"]}
-            position={entry["POS"]}
+            position={entry["Pos"]}
             att={entry["Att"]}
             attPerG={entry["Att/G"]}
             yards={entry["Yds"]}
