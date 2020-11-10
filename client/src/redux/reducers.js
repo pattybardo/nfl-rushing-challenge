@@ -1,4 +1,4 @@
-const stats = (state = [] , action) => {
+const statsReducer = (state = [] , action) => {
 
     switch(action.type) {
         case 'FETCH_STATS_SUCCESS':
@@ -8,4 +8,4 @@ const stats = (state = [] , action) => {
     }
 }
 
-export default stats
+export default statsReducer

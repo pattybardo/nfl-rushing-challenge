@@ -2,10 +2,6 @@ var express = require('express')
 var router = express.Router()
 var pool = require('./db')
 
-router.get('/api/nfl-rushing', (request, response) => {
-    response.json("Hello World")
-})
-
 // Get all info 
 router.get('/api/get/nfl-rushing', (req, res) => {
 
