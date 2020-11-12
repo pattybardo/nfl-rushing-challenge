@@ -7,10 +7,6 @@ import Table from './Table';
 
 
 class App extends React.Component {
-  componentDidMount() {
-    
-    this.props.rushingStats()
-  }
 
   render() {
     return (
@@ -28,11 +24,4 @@ const mapStateToProps = state => {
   }
 }
 
-const mapDispatchToProps = dispatch => {
-  return {
-    rushingStats: () => dispatch(fetchStats())
-    
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps) (App);
+export default connect(mapStateToProps) (App);
