@@ -14,8 +14,6 @@ const store = createStore(statsReducer, composeEnhancers(
     applyMiddleware(thunk)
 ));
 
-//Dispatch the fetchStats() before our root component renders
-
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
