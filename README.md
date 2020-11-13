@@ -56,13 +56,13 @@ If you have any questions regarding requirements, do not hesitate to email your 
 ### Installation and running this solution
 This project was created using a React front end, Express backend, and PostgreSQL database. 
 
-## Installation
+### Installation
 
 Make sure PostgreSQL is [installed](https://www.postgresql.org/download/). 
 
 Download the repo and cd into the directory using your terminal of choice.
 
-## Creating the DB:
+#### Creating the DB
 
 To create the schema for the database, cd into the server directory and  execute the following command:
 
@@ -74,8 +74,10 @@ To initialize the db with the json provided, run:
 
 Now the database is populated! 
 
-Make sure the configurations to the postgres database are the same as [db.js] (https://github.com/pattybardo/nfl-rushing-challenge/blob/master/server/main/db.js). These should be the default values for a 
+Make sure the configurations to the postgres database are the same as [db.js](https://github.com/pattybardo/nfl-rushing-challenge/blob/master/server/main/db.js). These should be the default values for a 
 postgres database with no password.
+
+#### Running
 
 Execute:
 
@@ -89,10 +91,10 @@ To run the server, make sure you are in the server directory, and run:
 
 To run the client, cd into the client directory in a seperate terminal and run:
 
-npm start
+```npm start```
 
 
-## TESTING:
+### Testing
 
 to run the unit tests, cd into the client directory and run:
 
