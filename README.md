@@ -54,48 +54,50 @@ We will evaluate you on your ability to solve the problem defined in the require
 If you have any questions regarding requirements, do not hesitate to email your contact at theScore for clarification.
 
 ### Installation and running this solution
-... TODO
+This project was created using a React front end, Express backend, and PostgreSQL database. 
 
-Make sure PostgreSQL is installed. 
+## Installation
 
-cd into the server folder
+Make sure PostgreSQL is [installed](https://www.postgresql.org/download/). 
 
-Creating the DB:
+Download the repo and cd into the directory using your terminal of choice.
 
-To create the schema for the database execute the following command while in the server directory:
+## Creating the DB:
 
-psql -U postgres -h localhost -f ./rushing_schema.sql
+To create the schema for the database, cd into the server directory and  execute the following command:
+
+```psql -U postgres -h localhost -f ./rushing_schema.sql```
 
 To initialize the db with the json provided, run:
 
-npm run init:db
+```npm run init:db```
 
 Now the database is populated! 
 
-Make sure the configurations to the postgres database are the same as db.js (link). These shou;d be the default values for a 
+Make sure the configurations to the postgres database are the same as [db.js] (https://github.com/pattybardo/nfl-rushing-challenge/blob/master/server/main/db.js). These should be the default values for a 
 postgres database with no password.
 
 Execute:
 
-npm install 
+```npm install```
 
 In both the server and client directory.
 
 To run the server, make sure you are in the server directory, and run:
 
-npm start
+```npm start```
 
 To run the client, cd into the client directory in a seperate terminal and run:
 
 npm start
 
 
-TESTING:
+## TESTING:
 
 to run the unit tests, cd into the client directory and run:
 
-npm test a
+```npm test a```
 
 This will run unit tests for the components and redux actions and reducer.
 
-
+If you have any issues with implementing the solution, please feel free to reach out. Even if everything goes well, feel free to reach out and chat anyways!
