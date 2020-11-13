@@ -1,7 +1,7 @@
 import { createStore, applyMiddleware, compose} from 'redux';
 
 import thunk from 'redux-thunk'
-import statsReducer from './reducers'
+import statsReducer from './reducer'
 import { fetchStats } from './actions'
 
 function setupStore() {

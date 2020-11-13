@@ -1,7 +1,6 @@
 import React from 'react';
 
 import { connect } from "react-redux";
-import { fetchStats } from '../redux/actions'
 import Table from './Table';
 
 
