@@ -68,7 +68,7 @@ rushingData.forEach(async playerStat => {
             playerStat["40+"],
             playerStat["FUM"]
         ]
-        pool.query(`INSERT INTO nfl_rushing(
+        await pool.query(`INSERT INTO nfl_rushing(
             player, 
             team,
             position,

@@ -55,3 +55,47 @@ If you have any questions regarding requirements, do not hesitate to email your 
 
 ### Installation and running this solution
 ... TODO
+
+Make sure PostgreSQL is installed. 
+
+cd into the server folder
+
+Creating the DB:
+
+To create the schema for the database execute the following command while in the server directory:
+
+psql -U postgres -h localhost -f ./rushing_schema.sql
+
+To initialize the db with the json provided, run:
+
+npm run init:db
+
+Now the database is populated! 
+
+Make sure the configurations to the postgres database are the same as db.js (link). These shou;d be the default values for a 
+postgres database with no password.
+
+Execute:
+
+npm install 
+
+In both the server and client directory.
+
+To run the server, make sure you are in the server directory, and run:
+
+npm start
+
+To run the client, cd into the client directory in a seperate terminal and run:
+
+npm start
+
+
+TESTING:
+
+to run the unit tests, cd into the client directory and run:
+
+npm test a
+
+This will run unit tests for the components and redux actions and reducer.
+
+
